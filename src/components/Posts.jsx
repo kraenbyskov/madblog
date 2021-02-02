@@ -28,7 +28,7 @@ background-size:cover;
 `
 
 const Post = ({ article }) => {
-    console.log(article)
+
     const { title, courseImage } = article.fields
     return (
         <Card>

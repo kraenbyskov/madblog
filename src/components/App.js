@@ -29,9 +29,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
+
+
           <Route exact path="/" >
             <Posts data={state} />
           </Route>
+
+
           <Route path="/Posts/:id">
             <SinglePage />
           </Route>

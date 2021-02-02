@@ -13,9 +13,23 @@ background-position:center;
 background-size:cover;
 `
 
+const Tags = styled.div`
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:50%;
+`
+
+const Tag = styled.span`
+background:lightgray;
+padding:8px 20px;
+border-radius:5px;
+`
+
 
 const Content = ({ data }) => {
     const { title, tags, description, longDescription, courseImage, nutritionPerServings, ingredients } = data.fields
+    console.log(ingredients)
     return (
         <div>
             <CardImage Image={courseImage && courseImage.fields.file.url} />
@@ -23,6 +37,27 @@ const Content = ({ data }) => {
 
             <section dangerouslySetInnerHTML={{ __html: documentToHtmlString(description) }} />
             <section dangerouslySetInnerHTML={{ __html: documentToHtmlString(longDescription) }} />
+
+            <Tags>
+                {tags.map((tags) => (
+                    <Tag>{tags}</Tag>
+                ))}
+            </Tags>
+            <h3>Ingredients</h3>
+            <ul>
+                {ingredients.map((ingredients) => (
+                    <li>{ingredients}</li>
+                ))}
+            </ul>
+
+            <h3>Nutrition per servings</h3>
+            <ul>
+                {nutritionPerServings.map((nutrition) => (
+                    <li>{nutrition}</li>
+                ))}
+            </ul>
+
+
 
         </div>
     )
